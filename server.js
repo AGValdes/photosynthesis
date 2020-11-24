@@ -24,13 +24,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', helloWorld);
 app.get('/search', getPlants);
-// app.post('/search', renderSearch);
-
-// function renderSearch(req, res) {
-
-
-
-// }
+app.post('/viewdetails', getDetails);
 
 
 function getPlants(req, res) {
@@ -38,7 +32,6 @@ function getPlants(req, res) {
   let url = `https://trefle.io/api/v1/plants/search?token=${KEY}&q=${currentSearch}`;
   superagent.get(url)
     .then(plantObject => {
-      console.log('body',plantObject.body.data);
       return plantObject.body.data
     })
     .then(data =>{
@@ -50,11 +43,49 @@ function getPlants(req, res) {
     .catch(err => console.error(err));
 }
 
+function getDetails(req, res) {
+  let ID = req.body.id;
+  let url = `https://trefle.io/api/v1/plants/${ID}?token=${KEY}`;
+  superagent.get(url)
+    .then(detailPlantObject =>{
+      return detailPlantObject.body.data;
+    })
+    .then(data =>{
+      return new DetailedPlants(data);
+    })
+    .then(object =>{
+      console.log(object);
+      res.render('./pages/details', {plantDetails: object});
+    })
+    .catch(err => console.error(err));
+}
+
 function Plants(results) {
   this.common_name = results.common_name;
   this.image_url = results.image_url;
   this.scientific_name = results.scientific_name;
   this.id = results.id;
+}
+
+function DetailedPlants(results){
+  this.common_name = results.common_name;
+  this.scientific_name = results.scientific_name;
+  this.image_url = results.image_url;
+  this.edibility = results.main_species.edible;
+  this.vegetable = results.vegetable;
+  this.imagesArray = results.main_species.images;
+  this.distributionLocations = results.main_species.distribution.native;
+  this.flowering = results.main_species.flower.conspicuous;
+  this.fruiting = results.main_species.fruit_or_seed.conspicuous;
+  this.phMax = results.main_species.growth.ph_maximum;
+  this.phMin = results.main_species.growth.ph_minimum;
+  this.light = results.main_species.growth.light;
+  this.minTemp = results.main_species.growth.minimum_temperature.deg_f;
+  this.maxTemp = results.main_species.growth.maximum_temperature.deg_f;
+  this.soilNutriments = results.main_species.growth.soil_nutriments;
+  this.soilSalinity = results.main_species.growth.soil_salinity;
+  this.soilTexture = results.main_species.growth.soil_texture;
+  this.soilHumidity = results.main_species.growth.soil_humidity;
 }
 
 
