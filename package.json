@@ -1,0 +1,32 @@
+{
+  "name": "photosynthesis",
+  "version": "1.0.0",
+  "description": "An app that allows the user to search for various plants and save their favorites!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AGValdes/photosynthesis.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AGValdes/photosynthesis/issues"
+  },
+  "homepage": "https://github.com/AGValdes/photosynthesis#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.6",
+    "pg": "^8.5.1",
+    "superagent": "^6.1.0"
+  }
+}
