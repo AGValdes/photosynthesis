@@ -25,13 +25,6 @@ app.get('/hello', helloWorld);
 app.get('/search', getPlants);
 
 
-// (async ()=> {
-//     const response = await fetch(`https://trefle.io/api/v1/plants?token=${KEY}`);
-//     const json = await response.json();
-//     console.log(json);
-// })();
-
-
 function getPlants(req, res) {
     let url = `https://trefle.io/api/v1/plants?token=${KEY}`;
     superagent.get(url)
