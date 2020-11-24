@@ -10,7 +10,7 @@
 
     </header>
     <main>
-        <% namedArr.forEach(plant=>{ %>
+        <% searchresults.forEach(plant=>{ %>
             <form action="/viewdetails" method="POST">
                 <input type="hidden" name="id" value="<%= plant.id %>">
                 <img src="<%= plant.image_url %>" alt="<%= plant.common_name %>">

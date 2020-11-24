@@ -27,31 +27,26 @@ app.get('/search', getPlants);
 // app.post('/search', renderSearch);
 
 // function renderSearch(req, res) {
-    
-    
+
+
 
 // }
 
 
 function getPlants(req, res) {
   let currentSearch = req.query.namedsearch;
-  console.log(req.query);
   let url = `https://trefle.io/api/v1/plants/search?token=${KEY}&q=${currentSearch}`;
   superagent.get(url)
     .then(plantObject => {
-      
-      var namedArr = [];
-      plantObject.body.data.forEach(element =>{
-        // console.log('this is what we are mapping over', plantObject.body.data);
-        console.log('this should be our aloe plants',namedArr);
-        console.log('this is our element', element);
-        namedArr.push( new Plants(element));
-      })
+      console.log('body',plantObject.body.data);
+      return plantObject.body.data
     })
-    .then(namedArr =>{
-      res.render('./pages/searches', namedArr);
-     })
-
+    .then(data =>{
+      let info = data.map(plant => {
+        return new Plants(plant);
+      });
+      res.render('./pages/searches.ejs', {searchresults: info});
+    })
     .catch(err => console.error(err));
 }
 
