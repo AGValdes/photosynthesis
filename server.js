@@ -1,5 +1,6 @@
 'use strict'
 
+
 require('dotenv').config();
 
 const express = require('express');
@@ -23,21 +24,42 @@ app.set('view engine', 'ejs');
 
 app.get('/', helloWorld);
 app.get('/search', getPlants);
+// app.post('/search', renderSearch);
+
+// function renderSearch(req, res) {
+    
+    
+
+// }
 
 
 function getPlants(req, res) {
   let currentSearch = req.query.namedsearch;
   console.log(req.query);
-    let url = `https://trefle.io/api/v1/plants/search?token=${KEY}&q=${currentSearch}`;
-  
-  
-  
+  let url = `https://trefle.io/api/v1/plants/search?token=${KEY}&q=${currentSearch}`;
   superagent.get(url)
-    .then(results => {
-      console.log(url);
-    console.log(results.body);
+    .then(plantObject => {
+      
+      var namedArr = [];
+      plantObject.body.data.forEach(element =>{
+        // console.log('this is what we are mapping over', plantObject.body.data);
+        console.log('this should be our aloe plants',namedArr);
+        console.log('this is our element', element);
+        namedArr.push( new Plants(element));
+      })
     })
+    .then(namedArr =>{
+      res.render('./pages/searches', namedArr);
+     })
+
     .catch(err => console.error(err));
+}
+
+function Plants(results) {
+  this.common_name = results.common_name;
+  this.image_url = results.image_url;
+  this.scientific_name = results.scientific_name;
+  this.id = results.id;
 }
 
 

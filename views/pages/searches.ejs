@@ -6,6 +6,22 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <header>
+
+    </header>
+    <main>
+        <% namedArr.forEach(plant=>{ %>
+            <form action="/viewdetails" method="POST">
+                <input type="hidden" name="id" value="<%= plant.id %>">
+                <img src="<%= plant.image_url %>" alt="<%= plant.common_name %>">
+                <h2> <%= plant.common_name %> </h2>
+                <h3> <%= plant.scientific_name %> </h3>
+                <button type="submit">View Details</button>
+            </form>
+           <% }) %>
+    </main>
+
+
+
 </body>
 </html>
