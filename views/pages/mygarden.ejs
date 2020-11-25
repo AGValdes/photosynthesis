@@ -1,11 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <header>
+        <%- include('../components/nav') %>
+    </header>
+    <main>
+        <% plant.forEach(plant =>{ %>
+        <section>
+            <img src="<%=plant.image_url%>" alt="photo of a <%=plant.common_name%>">
+            <div id="namediv">
+                <h2><%=plant.common_name %></h2>
+                <h4><%= plant.scientific_name %></h4>
+
+            </div>
+            <div id="carediv">
+                <span>view growing details</span>
+                <ul>
+                    <li>
+                        Edible: <%=plant.edibility%>
+                    </li>
+                    <li>Vegetable: <%=plant.vegetable %>
+                    </li>
+                    <li>Fruiting: <%=plant.fruiting %>
+                    </li>
+                    <li>
+                        Flowering: <%=plant.flowering %>
+                    </li>
+                    <li>Native to: <%=plant.distribution %>
+                    </li>
+                    <li>
+                        Light: <%=plant.light %>
+                    </li>
+                    <li>
+                        Soil pH Range: <%=plant.phMin %> - <%=plant.phMax %>
+                    </li>
+                    <li>Ambient Temp Range: <%=plant.minTemp%> - <%=plant.maxTemp%></li>
+                    <li>
+                        Soil Nutriment Concentration: <%=plant.soilNutriments%>
+                    </li>
+                    <li>
+                        Soil Salinity:
+                        <%=plant.soilSalinity%>
+                    </li>
+                    <li>Soil Texture:
+                        <%=plant.soilTexture%>
+                    </li>
+                    <li>Soil Humidity: <%=plant.soilHumidity%></li>
+                    <li>
+                        <a href="https://en.wikipedia.org/wiki/<%=plant.scientific_name%>">Learn More</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+
+        <% }) %>
+
+    </main>
+
+
 </body>
+
 </html>
