@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <main>
+        <% plant.forEach(plant =>{ %>
+        <section>
+            <img src="<%= plant.image_url %>" alt="Photo of a <%= plant.common_name %>">
+            <h2><%= plant.common_name %></h2>
+            <h4><%= plant.scientific_name %></h4>
+            <a href="https://www.google.com/search?psb=1&tbm=shop&q=<%= plant.common_name %>+plant">Search Google
+                Shopping For
+                This
+                Plant</a>
+        </section>
+        <% }) %>
+
+    </main>
 </body>
+
 </html>

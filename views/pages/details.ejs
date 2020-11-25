@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= plantDetails.common_name %></title>
 </head>
+
 <body>
     <h2>Common Name: <%= plantDetails.common_name %></h2>
     <ul>
@@ -13,23 +15,19 @@
         <li>Edibility: <%= plantDetails.edibility %></li>
         <li>Vegetable: <%= plantDetails.vegetable %> Fruit: <%= plantDetails.fruiting %></li>
         <li>Flowering: <%= plantDetails.flowering %> </li>
-        <li><ul>Native Distribution: <% plantDetails.distributionLocations.forEach(location => { %>
-            <li><%= location %></li>
-            <% }) %></ul></li>
-        </ul>
-        <h4>Image Gallery:</h4>
-        <% plantDetails.imagesArray.forEach(url => { %>
-            <img src="<%= url %>">
-        <% }) %>
-    <form action="/wishlist">
+        <li>
+            <ul>Native Distribution: <% plantDetails.distributionLocations.forEach(location => { %>
+                <li><%= location %></li>
+                <% }) %></ul>
+        </li>
+    </ul>
+    <form action="/wishlist" method="post">
         <input type="hidden" name="common_name" value="<%= plantDetails.common_name %>">
         <input type="hidden" name="scientific_name" value="<%= plantDetails.scientific_name %>">
         <input type="hidden" name="image_url" value="<%= plantDetails.image_url %>">
         <input type="hidden" name="edibility" value="<%= plantDetails.edibility %>">
         <input type="hidden" name="vegetable" value="<%= plantDetails.vegetable %>">
-        <% plantDetails.distributionLocations.forEach(location =>{ %>
-            <input type="hidden" class="locations" name="distribution" value="<%= location %>">
-        <% }) %>
+        <input type="hidden" name="distribution" value="<%= plantDetails.locationString %>">
         <input type="hidden" name="flowering" value="<%= plantDetails.flowering %>">
         <input type="hidden" name="fruiting" value="<%= plantDetails.fruiting %>">
         <input type="hidden" name="phMax" value="<%= plantDetails.phMax %>">
@@ -45,4 +43,5 @@
         <button type="submit" formaction="/mygarden">Add to Garden</button>
     </form>
 </body>
+
 </html>
