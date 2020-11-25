@@ -30,6 +30,7 @@ app.get('/wishlist', renderWishlistPage);
 app.post('/mygarden', populateGardenDB);
 app.get('/mygarden', renderGardenPage);
 app.put('/addmygarden', addfromwishlist);
+app.get('/filter', getCategory);
 
 
 
@@ -49,6 +50,22 @@ function getPlants(req, res) {
     .catch(err => console.error(err));
 }
 
+function getCategory(req, res) {
+  let filterParam = req.query.value;
+  let url = `https://trefle.io/api/v1/species?token=${KEY}&filter[${filterParam}]=true`;
+  superagent.get(url)
+    .then(plantObject => {
+      return plantObject.body.data
+    })
+    .then(data => {
+      let info = data.map(plant => {
+        return new Plants(plant);
+      })
+      res.render('./pages/searches.ejs', { searchresults: info });
+    })
+    .catch(err => console.error(err));
+}
+
 function getDetails(req, res) {
   let ID = req.body.id;
   let url = `https://trefle.io/api/v1/plants/${ID}?token=${KEY}`;
@@ -60,7 +77,6 @@ function getDetails(req, res) {
       return new DetailedPlants(data);
     })
     .then(object => {
-      console.log(object);
       res.render('./pages/details', { plantDetails: object });
     })
     .catch(err => console.error(err));
@@ -76,7 +92,6 @@ function populateWishlistDB(req, res) {
 }
 
 function populateGardenDB(req, res) {
-  console.log('this is our add to garden return', req.body);
   let { common_name, scientific_name, image_url, edibility, vegetable, distribution, flowering, fruiting, phMax, phMin, light, minTemp, maxTemp, soilNutriments, soilSalinity, soilTexture, soilHumidity } = req.body;
   let SQL = `INSERT INTO saved_plants (common_name, scientific_name, image_url, edibility, vegetable, distributionLocations, flowering, fruiting, phMax, phMin, light, minTemp, maxTemp, soilNutriments, soilSalinity, soilTexture, soilHumidity, ismygarden) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18) RETURNING *;`;
   let values = [common_name, scientific_name, image_url, edibility, vegetable, distribution, flowering, fruiting, phMax, phMin, light, minTemp, maxTemp, soilNutriments, soilSalinity, soilTexture, soilHumidity, true];
@@ -86,13 +101,10 @@ function populateGardenDB(req, res) {
 }
 
 function addfromwishlist(req, res) {
-  console.log('this is what we send when we try to add to garden from', req.body);
   let SQL = `UPDATE saved_plants SET ismygarden = $1 WHERE scientific_name = '${req.body.scientific_name}' RETURNING *;`;
   let values = [true];
   client.query(SQL, values)
   renderGardenPage(req, res);
-  // .then(res.redirect('/mygarden'))
-  // .catch(err => console.error(err));
 }
 
 
