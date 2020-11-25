@@ -7,7 +7,7 @@ CREATE TABLE saved_plants (
   image_url VARCHAR(255),
   edibility VARCHAR(255),
   vegetable VARCHAR(255),
-  distributionLocations VARCHAR(255),
+  distributionLocations TEXT,
   flowering VARCHAR(255),
   fruiting VARCHAR(255),
   phMax VARCHAR(255),

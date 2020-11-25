@@ -8,6 +8,9 @@
 </head>
 
 <body>
+    <header>
+        <%- include('../components/nav') %>
+    </header>
     <h2>Common Name: <%= plantDetails.common_name %></h2>
     <ul>
         <img src="<%= plantDetails.image_url %>" alt="Photo of a <%= plantDetails.common_name %>">
@@ -40,8 +43,9 @@
         <input type="hidden" name="soilTexture" value="<%= plantDetails.soilTexture %>">
         <input type="hidden" name="soilHumidity" value="<%= plantDetails.soilHumidity %>">
         <button type="submit">Add to Wishlist</button>
-        <button type="submit" formaction="/mygarden">Add to Garden</button>
+        <button type="submit" formaction="/mygarden" formmethod="post">Add to Garden</button> 
     </form>
+    
 </body>
 
 </html>

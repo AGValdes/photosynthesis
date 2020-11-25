@@ -6,11 +6,12 @@
     <title>Document</title>
 </head>
 <body>
+    <header>
+        <%- include('../components/nav') %>
+
+    </header>
     <form action="/search" method="get">
         <input type="text" name="namedsearch" placeholder="Search by plant name">
-    
-    
-
         <button type="submit" >Search</button>
     </form>
 </body>
