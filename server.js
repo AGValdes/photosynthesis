@@ -29,6 +29,7 @@ app.post('/wishlist', populateWishlistDB);
 app.get('/wishlist', renderWishlistPage);
 app.post('/mygarden', populateGardenDB);
 app.get('/mygarden', renderGardenPage);
+app.post('/mygarden/new', addNotes);
 app.put('/addmygarden', addfromwishlist);
 app.get('/filter', getCategory);
 
@@ -36,7 +37,7 @@ app.get('/filter', getCategory);
 
 function getPlants(req, res) {
   let currentSearch = req.query.namedsearch;
-  let url = `https://trefle.io/api/v1/plants/search?token=${KEY}&q=${currentSearch}&filter_not=null`;
+  let url = `https://trefle.io/api/v1/plants/search?token=${KEY}&q=${currentSearch}`;
   superagent.get(url)
     .then(plantObject => {
       return plantObject.body.data
@@ -49,6 +50,11 @@ function getPlants(req, res) {
     })
     .catch(err => console.error(err));
 }
+
+// if(button is clicked){
+  //let filterVeg = '&filter[vegetable]=true'
+  //let url += filterVeg
+//}
 
 function getCategory(req, res) {
   let filterParam = req.query.value;
@@ -112,9 +118,18 @@ function renderGardenPage(req, res) {
   let SQL = `SELECT DISTINCT common_name, scientific_name, image_url, edibility, vegetable, distributionLocations, flowering, fruiting, phMax, phMin, light, minTemp, maxTemp, soilNutriments, soilSalinity, soilTexture, soilHumidity FROM saved_plants WHERE ismygarden = 'true';`;
 
   client.query(SQL)
-    .then(results => {
-      res.render('./pages/mygarden', { plant: results.rows });
+    .then(plant => {
+      let SQL2 = `SELECT plantJournal, scientific_name FROM saved_plants;`;
+      client.query(SQL2)
+        .then(results =>{
+          console.log('results:',results.rows);
+          let resultsArray = results.rows;
+          console.log(resultsArray);
+          res.render('./pages/mygarden', { plant: plant.rows, results: resultsArray});
+        })
+        .catch(err => console.error(err));
     })
+    .catch(err => console.error(err));
 }
 
 function renderWishlistPage(req, res) {
@@ -126,7 +141,20 @@ function renderWishlistPage(req, res) {
     })
 }
 
+function addNotes(req,res){
+  console.log('results TO db:', req.body.plantNotes);
+  let SQL = `INSERT INTO saved_plants (plantJournal, scientific_name) VALUES ($1, $2);`;
+  let values = [req.body.plantNotes, req.body.name];
+  return client.query(SQL, values)
+    .then(res.redirect('/mygarden'))
+    .catch(err => console.error(err));
+}
 
+function Notes(savedNotes){
+  for(let key in savedNotes){
+    this[key] = savedNotes[key];
+  }
+}
 
 
 function Plants(results) {

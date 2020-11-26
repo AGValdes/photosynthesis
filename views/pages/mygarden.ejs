@@ -58,10 +58,20 @@
                     </li>
                 </ul>
             </div>
+            <div>
+                <% results.forEach(note =>{ %>
+                    <% let nameCheck = plant.scientific_name; %>
+                    <% if(note.scientific_name === nameCheck){ %>
+                    <p><%= note.plantjournal %></p>
+                    <% } %>
+                  <% }) %>
+                <form action="/mygarden/new" method="post">
+                    <input type="text" name="plantNotes" placeholder="Make notes about your plant here!">
+                    <input type="hidden" name="name" value="<%= plant.scientific_name %>">
+                    <button type="submit">Save</button>
+                </form>
+            </div>
         </section>
-
-
-
         <% }) %>
 
     </main>
