@@ -19,8 +19,12 @@
             <h2><%= plant.common_name %></h2>
             <h4><%= plant.scientific_name %></h4>
             <form action="/addmygarden?_method=PUT" method="post">
-            <input type="hidden" name="scientific_name" value="<%= plant.scientific_name %>">
-            <button type="submit">Add to my Garden</button>
+                <input type="hidden" name="scientific_name" value="<%= plant.scientific_name %>">
+                <button type="submit">Add to my Garden</button>
+            </form>
+            <form action="/removefromwishlist?_method=PUT" method="post">
+                <input type="hidden" name="scientific_name" value="<%= plant.scientific_name %>">
+                <button type="submit">Remove from my Wishlist</button>
             </form>
             <a href="https://www.google.com/search?psb=1&tbm=shop&q=<%= plant.common_name %>+plant">Search Google
                 Shopping For

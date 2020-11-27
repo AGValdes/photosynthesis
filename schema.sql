@@ -19,6 +19,7 @@ CREATE TABLE saved_plants (
   soilSalinity VARCHAR(255),
   soilTexture VARCHAR(255),
   soilHumidity VARCHAR(255),
+  plantJournal TEXT,
   ismygarden VARCHAR(255),
   ismywishlist VARCHAR(255)
 );

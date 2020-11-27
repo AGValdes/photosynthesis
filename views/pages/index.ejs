@@ -1,18 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <header>
         <%- include('../components/nav') %>
 
     </header>
-    <form action="/search" method="get">
-        <input type="text" name="namedsearch" placeholder="Search by plant name">
-        <button type="submit" >Search</button>
-    </form>
+    <main>
+
+        <form action="/search" method="get">
+            <input type="text" name="namedsearch" placeholder="Search by plant name">
+            <button type="submit">Search</button>
+        </form>
+        <section>
+            <h2>Browse By Category</h2>
+            <form action="/filter" method="get">
+                <input type="hidden" name="value" value="edible">
+                <button type="submit">Browse Edible Plants</button>
+            </form>
+            <form action="/filter" method="get">
+                <input type="hidden" name="value" value="vegetable">
+                <button type="submit">Browse Vegetables</button>
+            </form>
+            <form action="/filter" method="get">
+                <input type="hidden" name="value" value="fruit_conspicuous">
+                <button type="submit">Browse Fruiting Plants</button>
+            </form>
+            <form action="/filter" method="get">
+                <input type="hidden" name="value" value="flower_conspicuous">
+                <button type="submit">Browse Flowering Plants</button>
+            </form>
+        </section>
+    </main>
 </body>
+
 </html>
