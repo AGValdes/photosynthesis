@@ -15,6 +15,8 @@
     </header>
 
     <main>
+        <section>
+         <h2> Showing results for <%= searchedfor %> </h2> 
         <% searchresults.forEach(plant=>{ %>
         <form action="/viewdetails" method="POST">
             <input type="hidden" name="id" value="<%= plant.id %>">
@@ -24,6 +26,22 @@
             <button type="submit">View Details</button>
         </form>
         <% }) %>
+        </section>
+        
+        <section>
+            <form action="/filterResults" method="get">
+            <input type="hidden" name="searchedfor" value="<%=searchedfor%>">
+            <input type="checkbox" name="&filter[edible]=true" value="edible" id="edible"><label for="edible" >Edible</label>
+            <input type="checkbox" neme="&filter[vegetable]=true" value="vegetable" id="vegetable"><label for="vegetable">Vegetable</label>
+            <input type="checkbox" name="&filter[fruit_conspicuous]=true" value="fruits" id="fruit"><label for="fruit">Fruit</label>
+            <input type="checkbox" name="&filter[flower_conspicuous]=true" value="flowering" id="flowering"><label for="flowering">Flowering</label>
+            <input type="checkbox" name="&filter[toxicity]=false" value="nontoxic" id="nontoxic"><label for="nontoxic">Non-Toxic</label>
+            <button type="submit">Filter</button>
+            </form>
+
+
+
+        </section>
     </main>
 
 
