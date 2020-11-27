@@ -9,6 +9,7 @@ const superagent = require('superagent');
 const pg = require('pg');
 const methodOverride = require('method-override');
 const cors = require('cors');
+const { render } = require('ejs');
 
 
 const KEY = process.env.KEY;
@@ -27,10 +28,12 @@ app.get('/search', getPlants);
 app.post('/viewdetails', getDetails);
 app.post('/wishlist', populateWishlistDB);
 app.get('/wishlist', renderWishlistPage);
+app.put('/removefromwishlist', removeFromWishlist);
 app.post('/mygarden', populateGardenDB);
 app.get('/mygarden', renderGardenPage);
 app.post('/mygarden/new', addNotes);
 app.put('/addmygarden', addfromwishlist);
+app.put('/removefrommygarden', removeFromMyGarden);
 app.get('/filter', getCategory);
 // app.get('/filterResults', filterSearchResults);
 
@@ -135,6 +138,13 @@ function populateGardenDB(req, res) {
     .catch(err => console.error(err));
 }
 
+function removeFromMyGarden(req, res) {
+  let SQL = `UPDATE saved_plants SET ismygarden = $1 WHERE scientific_name = '${req.body.scientific_name}' RETURNING *;`;
+  let values = [false];
+  client.query(SQL, values)
+  renderGardenPage(req, res);
+}
+
 function addfromwishlist(req, res) {
   let SQL = `UPDATE saved_plants SET ismygarden = $1 WHERE scientific_name = '${req.body.scientific_name}' RETURNING *;`;
   let values = [true];
@@ -142,6 +152,12 @@ function addfromwishlist(req, res) {
   renderGardenPage(req, res);
 }
 
+function removeFromWishlist(req, res) {
+  let SQL = `UPDATE saved_plants SET ismywishlist = $1 WHERE scientific_name = '${req.body.scientific_name}' RETURNING *;`;
+  let values = [false];
+  client.query(SQL, values)
+  renderWishlistPage(req, res);
+}
 
 function renderGardenPage(req, res) {
   let SQL = `SELECT DISTINCT common_name, scientific_name, image_url, edibility, vegetable, distributionLocations, flowering, fruiting, phMax, phMin, light, minTemp, maxTemp, soilNutriments, soilSalinity, soilTexture, soilHumidity FROM saved_plants WHERE ismygarden = 'true';`;

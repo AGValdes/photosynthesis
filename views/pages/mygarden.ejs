@@ -18,7 +18,10 @@
             <div id="namediv">
                 <h2><%=plant.common_name %></h2>
                 <h4><%= plant.scientific_name %></h4>
-
+                <form action="/removefrommygarden?_method=PUT" method="post">
+                    <input type="hidden" name="scientific_name" value="<%= plant.scientific_name %>">
+                    <button type="submit">Remove from my Garden</button>
+                </form>
             </div>
             <div id="carediv">
                 <span>view growing details</span>
@@ -60,11 +63,11 @@
             </div>
             <div>
                 <% results.forEach(note =>{ %>
-                    <% let nameCheck = plant.scientific_name; %>
-                    <% if(note.scientific_name === nameCheck){ %>
-                    <p><%= note.plantjournal %></p>
-                    <% } %>
-                  <% }) %>
+                <% let nameCheck = plant.scientific_name; %>
+                <% if(note.scientific_name === nameCheck){ %>
+                <p><%= note.plantjournal %></p>
+                <% } %>
+                <% }) %>
                 <form action="/mygarden/new" method="post">
                     <input type="text" name="plantNotes" placeholder="Make notes about your plant here!">
                     <input type="hidden" name="name" value="<%= plant.scientific_name %>">
