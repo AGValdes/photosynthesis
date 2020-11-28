@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= plantDetails.common_name %></title>
+    <%- include('../components/head')%>
 </head>
 
 <body>
     <header>
+        <img id="logo" src="https://via.placeholder.com/30">
         <%- include('../components/nav') %>
     </header>
     <h2>Common Name: <%= plantDetails.common_name %></h2>
@@ -43,9 +43,9 @@
         <input type="hidden" name="soilTexture" value="<%= plantDetails.soilTexture %>">
         <input type="hidden" name="soilHumidity" value="<%= plantDetails.soilHumidity %>">
         <button type="submit">Add to Wishlist</button>
-        <button type="submit" formaction="/mygarden" formmethod="post">Add to Garden</button> 
+        <button type="submit" formaction="/mygarden" formmethod="post">Add to Garden</button>
     </form>
-    
+
 </body>
 
 </html>
