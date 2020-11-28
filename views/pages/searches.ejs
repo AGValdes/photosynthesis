@@ -2,31 +2,31 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Results</title>
+    <%- include('../components/head')%>
+    <link href="../styles/searches.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 
     <header>
         <%- include('../components/nav') %>
-
+        <img id="logo" src="https://via.placeholder.com/30">
+        <form id="second-search" action="/search" method="get">
+            <input id="search-bar" type="text" name="namedsearch" placeholder="Search For Another Plant">
+            <button type="submit">Search</button>
+        </form>
     </header>
 
     <main>
-        <section>
-            <h2>Viewing results for <%= searchedfor %></h2>
-            <form action="/search" method="get">
-                <input type="text" name="namedsearch" placeholder="Search For Another Plant">
-                <button type="submit">Search</button>
-            </form>
-        </section>
+        <h2>Viewing results for <%= searchedfor %></h2>
         <section>
             <% searchresults.forEach(plant=>{ %>
-            <form action="/viewdetails" method="POST">
+            <form class="search-result" action="/viewdetails" method="POST">
                 <input type="hidden" name="id" value="<%= plant.id %>">
-                <img src="<%= plant.image_url %>" alt="<%= plant.common_name %>">
+                <div class="image-container">
+                    <img src="<%= plant.image_url %>" alt="<%= plant.common_name %>">
+                </div>
                 <h2> <%= plant.common_name %> </h2>
                 <h3> <%= plant.scientific_name %> </h3>
                 <button type="submit">View Details</button>

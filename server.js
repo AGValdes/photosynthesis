@@ -18,7 +18,7 @@ const client = new pg.Client(process.env.DATABASE_URL);
 
 app.use(cors());
 app.use(methodOverride('_method'));
-app.use('/public', express.static('public'));
+app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
@@ -99,7 +99,7 @@ function getCategory(req, res) {
       let info = data.map(plant => {
         return new Plants(plant);
       })
-      res.render('./pages/searches.ejs', { searchresults: info });
+      res.render('./pages/searches.ejs', { searchresults: info, searchedfor: filterParam });
     })
     .catch(err => console.error(err));
 }

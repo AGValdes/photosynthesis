@@ -1,0 +1,41 @@
+#second-search{
+  float: right;
+  margin-bottom: 5px;
+}
+#search-bar{
+  width: 25vw;
+}
+h2{
+  text-align:center;
+  margin: 1vw;
+  font-size: 1.1em;
+}
+h3{
+  font-style: italic;
+  font-size: .9em;
+}
+.image-container{
+  width: 200px;
+  height: 200px;
+  overflow:hidden;
+  margin: auto;
+  padding: 1vw;
+  border-radius: 5px;
+}
+img{
+  width: 300px;
+}
+section{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.search-result{
+  width: 25vw;
+  background-color:rgba(167, 151, 189, 0.7);
+  margin: 1vw;
+  text-align: center;
+  border: #56878C 2px solid;
+  border-radius: 5px;
+}
