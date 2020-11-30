@@ -9,14 +9,14 @@
 
 <body>
     <header>
-        <%- include('../components/nav') %>
         <img id="logo" src="../../styles/img/logoimage.png">
+        <%- include('../components/nav') %>
     </header>
     <main>
         <% plant.forEach(plant =>{ %>
         <section class="plant-detail-box">
             <div class="image-container">
-                <img src="<%=plant.image_url%>" alt="photo of a <%=plant.common_name%>">
+                <img id="plant-pic" src="<%=plant.image_url%>" alt="photo of a <%=plant.common_name%>">
             </div>
             <div class="name-care-div-container">
                 <div class="namediv">
@@ -89,8 +89,9 @@
         <% }) %>
 
     </main>
+    <footer>
 
-
+    </footer>
 </body>
 
 </html>

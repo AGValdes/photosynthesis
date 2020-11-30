@@ -1,5 +1,7 @@
+
 main {
   margin-top: 25px;
+  margin-bottom: 25px;
   padding: 5px;
   background-color: rgba(169, 136, 191, .55);
   width: 87%;
@@ -15,7 +17,9 @@ main {
   margin-left: auto;
   margin-right: auto;
   margin-top: 40px;
+  border-radius: 3px;
 }
+
 
 #searchbar {
   width: 30%;
@@ -31,7 +35,7 @@ main {
   display: flex;
   flex-direction: row;
   text-align: center;
-  margin-left: 26%;
+  margin-left: 22%;
 }
 
 p{
@@ -39,6 +43,8 @@ p{
   margin-bottom: .5%;
   font-size: 20px;
   text-align: center;
+  border-radius: 3px;
+  padding: 1vw;
 }
 
 h2 {

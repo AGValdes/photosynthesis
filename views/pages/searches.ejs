@@ -10,16 +10,16 @@
 <body>
 
     <header>
-        <%- include('../components/nav') %>
-        <img id="logo" src="https://via.placeholder.com/30">
         <form id="second-search" action="/search" method="get">
             <input id="search-bar" type="text" name="namedsearch" placeholder="Search For Another Plant">
             <button type="submit">Search</button>
         </form>
+        <img id="logo" src="../../styles/img/logoimage.png">
+        <%- include('../components/nav') %>
     </header>
 
     <main>
-        <h2>Viewing results for <%= searchedfor %></h2>
+        <h2>Viewing results for <%= searchedfor %> ...</h2>
         <section>
             <% searchresults.forEach(plant=>{ %>
             <form class="search-result" action="/viewdetails" method="POST">
@@ -33,11 +33,10 @@
             </form>
             <% }) %>
         </section>
-
     </main>
+    <footer>
 
-
-
+    </footer>
 </body>
 
 </html>

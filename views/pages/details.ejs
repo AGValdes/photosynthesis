@@ -4,48 +4,61 @@
 <head>
     <title><%= plantDetails.common_name %></title>
     <%- include('../components/head')%>
+    <link href="../styles/details.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     <header>
-        <img id="logo" src="https://via.placeholder.com/30">
+        <img id="logo" src="../../styles/img/logoimage.png">
         <%- include('../components/nav') %>
     </header>
-    <h2>Common Name: <%= plantDetails.common_name %></h2>
-    <ul>
-        <img src="<%= plantDetails.image_url %>" alt="Photo of a <%= plantDetails.common_name %>">
-        <li>Scientific Name: <%= plantDetails.scientific_name %></li>
-        <li>Edibility: <%= plantDetails.edibility %></li>
-        <li>Vegetable: <%= plantDetails.vegetable %> Fruit: <%= plantDetails.fruiting %></li>
-        <li>Flowering: <%= plantDetails.flowering %> </li>
-        <li>
-            <ul>Native Distribution: <% plantDetails.distributionLocations.forEach(location => { %>
-                <li><%= location %></li>
-                <% }) %></ul>
-        </li>
-    </ul>
-    <form action="/wishlist" method="post">
-        <input type="hidden" name="common_name" value="<%= plantDetails.common_name %>">
-        <input type="hidden" name="scientific_name" value="<%= plantDetails.scientific_name %>">
-        <input type="hidden" name="image_url" value="<%= plantDetails.image_url %>">
-        <input type="hidden" name="edibility" value="<%= plantDetails.edibility %>">
-        <input type="hidden" name="vegetable" value="<%= plantDetails.vegetable %>">
-        <input type="hidden" name="distribution" value="<%= plantDetails.locationString %>">
-        <input type="hidden" name="flowering" value="<%= plantDetails.flowering %>">
-        <input type="hidden" name="fruiting" value="<%= plantDetails.fruiting %>">
-        <input type="hidden" name="phMax" value="<%= plantDetails.phMax %>">
-        <input type="hidden" name="phMin" value="<%= plantDetails.phMin %>">
-        <input type="hidden" name="light" value=" <%= plantDetails.light %>">
-        <input type="hidden" name="minTemp" value="<%= plantDetails.minTemp %>">
-        <input type="hidden" name="maxTemp" value="<%= plantDetails.maxTemp %>">
-        <input type="hidden" name="soilNutriments" value="<%= plantDetails.soilNutriments %>">
-        <input type="hidden" name="soilSalinity" value="<%= plantDetails.soilSalinity %>">
-        <input type="hidden" name="soilTexture" value="<%= plantDetails.soilTexture %>">
-        <input type="hidden" name="soilHumidity" value="<%= plantDetails.soilHumidity %>">
-        <button type="submit">Add to Wishlist</button>
-        <button type="submit" formaction="/mygarden" formmethod="post">Add to Garden</button>
-    </form>
+    <main>
+        <section id="main-content-container">
+            <h2><span class="detail-label">Common Name:</span> <%= plantDetails.common_name %></h2>
+            <section id="plant-detail-container">
+                <img id="plant-for-details" src="<%= plantDetails.image_url %>"
+                    alt="Photo of a <%= plantDetails.common_name %>">
+                <ul id="plant-info">
+                    <li><span class="detail-label">Scientific Name:</span> <%= plantDetails.scientific_name %></li>
+                    <li><span class="detail-label">Edibility:</span> <%= plantDetails.edibility %></li>
+                    <li><span class="detail-label">Vegetable:</span> <%= plantDetails.vegetable %> <span
+                            class="detail-label">Fruit:</span>
+                        <%= plantDetails.fruiting %></li>
+                    <li><span class="detail-label">Flowering:</span> <%= plantDetails.flowering %> </li>
+                    <li>
+                        <ul><span class="detail-label">Native Distribution:</span>
+                            <% plantDetails.distributionLocations.forEach(location => { %>
+                            <li><%= location %></li>
+                            <% }) %></ul>
+                    </li>
+                </ul>
+            </section>
+            <form action="/wishlist" method="post">
+                <input type="hidden" name="common_name" value="<%= plantDetails.common_name %>">
+                <input type="hidden" name="scientific_name" value="<%= plantDetails.scientific_name %>">
+                <input type="hidden" name="image_url" value="<%= plantDetails.image_url %>">
+                <input type="hidden" name="edibility" value="<%= plantDetails.edibility %>">
+                <input type="hidden" name="vegetable" value="<%= plantDetails.vegetable %>">
+                <input type="hidden" name="distribution" value="<%= plantDetails.locationString %>">
+                <input type="hidden" name="flowering" value="<%= plantDetails.flowering %>">
+                <input type="hidden" name="fruiting" value="<%= plantDetails.fruiting %>">
+                <input type="hidden" name="phMax" value="<%= plantDetails.phMax %>">
+                <input type="hidden" name="phMin" value="<%= plantDetails.phMin %>">
+                <input type="hidden" name="light" value=" <%= plantDetails.light %>">
+                <input type="hidden" name="minTemp" value="<%= plantDetails.minTemp %>">
+                <input type="hidden" name="maxTemp" value="<%= plantDetails.maxTemp %>">
+                <input type="hidden" name="soilNutriments" value="<%= plantDetails.soilNutriments %>">
+                <input type="hidden" name="soilSalinity" value="<%= plantDetails.soilSalinity %>">
+                <input type="hidden" name="soilTexture" value="<%= plantDetails.soilTexture %>">
+                <input type="hidden" name="soilHumidity" value="<%= plantDetails.soilHumidity %>">
+                <button type="submit">Add to Wishlist</button>
+                <button type="submit" formaction="/mygarden" formmethod="post">Add to Garden</button>
+            </form>
+        </section>
+    </main>
+    <footer>
 
+    </footer>
 </body>
 
 </html>

@@ -1,9 +1,20 @@
 #second-search{
-  float: right;
+ display: flex;
+ justify-content: center;
+ align-items: center;
   margin-bottom: 5px;
+  margin-left: 1vw
+}
+#logo{
+  margin-left: 15vw;
+  margin-right: 5vw;
+}
+button{
+  float:right;
 }
 #search-bar{
   width: 25vw;
+  height: 5vh;
 }
 h2{
   text-align:center;
