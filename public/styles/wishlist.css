@@ -60,6 +60,8 @@ h4{
   border-radius: 5px;
   transition: 500ms all;
   text-decoration: none;
+  padding-left: 1vw;
+  padding-right: 1vw;
 }
 #go-to-shopping:hover{
   background-color: rgb(99, 83, 121);
