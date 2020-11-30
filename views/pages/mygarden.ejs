@@ -31,35 +31,40 @@
                     <span>view growing details</span>
                     <ul>
                         <li>
-                            Edible: <%=plant.edibility%>
+                            <span class="detail-label">Edible:</span> <%=plant.edibility%>
                         </li>
-                        <li>Vegetable: <%=plant.vegetable %>
+                        <li><span class="detail-label">Vegetable:</span> <%=plant.vegetable %>
                         </li>
-                        <li>Fruiting: <%=plant.fruiting %>
-                        </li>
-                        <li>
-                            Flowering: <%=plant.flowering %>
-                        </li>
-                        <li>Native to: <%=plant.distribution %>
+                        <li><span class="detail-label">Fruiting:</span> <%=plant.fruiting %>
                         </li>
                         <li>
-                            Light: <%=plant.light %>
+                            <span class="detail-label"> Flowering:</span> <%=plant.flowering %>
                         </li>
                         <li>
-                            Soil pH Range: <%=plant.phMin %> - <%=plant.phMax %>
-                        </li>
-                        <li>Ambient Temp Range: <%=plant.minTemp%> - <%=plant.maxTemp%></li>
-                        <li>
-                            Soil Nutriment Concentration: <%=plant.soilNutriments%>
+                            <span class="detail-label">Light(0(&lt;10 lux) - 10(&gt;10,000 lux)):</span>
+                            <%=plant.light %>
                         </li>
                         <li>
-                            Soil Salinity:
-                            <%=plant.soilSalinity%>
+                            <span class="detail-label"> Soil pH Range(Min-Max):</span> <%=plant.phmin %> -
+                            <%=plant.phmax %>
                         </li>
-                        <li>Soil Texture:
-                            <%=plant.soilTexture%>
+                        <li><span class="detail-label">Ambient Temp Range(Min-Max):</span> <%=plant.mintemp%> °F -
+                            <%=plant.maxtemp%> °F</li>
+                        <li>
+                            <span class="detail-label">Soil Nutriment Concentration(0(oligotrophic)-
+                                10(hypereutrophic)):</span> <%=plant.soilnutriments%>
                         </li>
-                        <li>Soil Humidity: <%=plant.soilHumidity%></li>
+                        <li>
+                            <span class="detail-label">Soil Salinity(dS/m):</span>
+                            <%=plant.soilsalinity%>
+                        </li>
+                        <li><span class="detail-label">Soil Texture(0(clay)-10(rock)):</span>
+                            <%=plant.soiltexture%>
+                        </li>
+                        <li><span class="detail-label">Soil Humidity(0(xerofile)- 10(subaquatic)):</span>
+                            <%=plant.soilhumidity%></li>
+                        <li><span>Native to:</span> <%=plant.distributionlocations %>
+                        </li>
                         <li>
                             <a id="go-to-wiki" href="https://en.wikipedia.org/wiki/<%=plant.scientific_name%>">Learn
                                 More</a>

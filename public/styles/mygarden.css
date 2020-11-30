@@ -59,7 +59,16 @@ h4{
   margin-top: 5vh;
   transition: 750ms;
   position: absolute;
-  overflow:hidden;
+  overflow:scroll;
+}
+.carediv::-webkit-scrollbar{
+  width: 0px;
+  height: 0px;
+  border: transparent;
+}
+.detail-label{
+  text-decoration: underline;
+  font-style: bold;
 }
 #go-to-wiki{
   border: #56878C 2px solid;
@@ -79,7 +88,7 @@ div ul{
   flex-wrap: wrap;
 }
 .carediv:hover{
-  height: 45vh;
+  height: 50vh;
 }
 span{
   display: block;
