@@ -4,14 +4,14 @@
 <head>
     <title>Photosynthesis</title>
     <%- include('../components/head')%>
-
+    <link href="./styles/homepage.css" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <img id="logo" src="https://via.placeholder.com/30">
-        <nav>
-            <ul>
+        <ul>
+            <nav>
+                <img id="logo" src="https://via.placeholder.com/30"> 
                 <li>
                     <a href="/wishlist">Wishlist</a>
                 </li>
@@ -22,28 +22,29 @@
         </nav>
     </header>
     <main>
-
+        <img id="decoration" src="https://images.unsplash.com/photo-1570309333923-e2c02cc10649?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80">
+        <p>Welcome to Photosynthesis! Here you can search for plants, access information about their growth, and save plants to look at again later. Search a plant or browse by category to get started!</p>
         <form action="/search" method="get">
-            <input type="text" name="namedsearch" placeholder="Search by plant name">
+            <input id="searchbar" type="text" name="namedsearch" placeholder="Search by plant name">
             <button type="submit">Search</button>
         </form>
-        <section>
-            <h2>Browse By Category</h2>
+        <h2>Browse Plants By Category</h2>
+        <section id="browsebuttons">
             <form action="/filter" method="get">
                 <input type="hidden" name="value" value="edible">
-                <button type="submit">Browse Edible Plants</button>
+                <button class="catagory" type="submit">Browse Edible Plants</button>
             </form>
             <form action="/filter" method="get">
                 <input type="hidden" name="value" value="vegetable">
-                <button type="submit">Browse Vegetables</button>
+                <button class="catagory" type="submit">Browse Vegetables</button>
             </form>
             <form action="/filter" method="get">
                 <input type="hidden" name="value" value="fruit_conspicuous">
-                <button type="submit">Browse Fruiting Plants</button>
+                <button class="catagory" type="submit">Browse Fruiting Plants</button>
             </form>
             <form action="/filter" method="get">
                 <input type="hidden" name="value" value="flower_conspicuous">
-                <button type="submit">Browse Flowering Plants</button>
+                <button class="catagory" type="submit">Browse Flowering Plants</button>
             </form>
         </section>
     </main>
