@@ -164,10 +164,10 @@ function renderGardenPage(req, res) {
 
   client.query(SQL)
     .then(plant => {
+      console.log('this is the plant from the DB', plant);
       let SQL2 = `SELECT plantJournal, scientific_name , to_char(current_date,'Mon-dd-yyyy') as date  FROM saved_plants WHERE plantJournal IS NOT null;`;
       client.query(SQL2)
         .then(results => {
-          console.log('results:', results.rows);
           let resultsArray = results.rows;
           console.log(resultsArray);
           res.render('./pages/mygarden', { plant: plant.rows, results: resultsArray });
@@ -220,18 +220,18 @@ function DetailedPlants(results) {
   this.locationString = '';
   this.flowering = results.main_species.flower.conspicuous;
   this.fruiting = results.main_species.fruit_or_seed.conspicuous;
-  this.phMax = results.main_species.growth.ph_maximum;
-  this.phMin = results.main_species.growth.ph_minimum;
-  this.light = results.main_species.growth.light;
-  this.minTemp = results.main_species.growth.minimum_temperature.deg_f;
-  this.maxTemp = results.main_species.growth.maximum_temperature.deg_f;
-  this.soilNutriments = results.main_species.growth.soil_nutriments;
-  this.soilSalinity = results.main_species.growth.soil_salinity;
-  this.soilTexture = results.main_species.growth.soil_texture;
-  this.soilHumidity = results.main_species.growth.soil_humidity;
+  this.phMax = results.main_species.growth.ph_maximum || 'No Data Provided';
+  this.phMin = results.main_species.growth.ph_minimum || 'No Data Provided';
+  this.light = results.main_species.growth.light || 'No Data Provided';
+  this.minTemp = results.main_species.growth.minimum_temperature.deg_f || 'No Data Provided';
+  this.maxTemp = results.main_species.growth.maximum_temperature.deg_f || 'No Data Provided';
+  this.soilNutriments = results.main_species.growth.soil_nutriments || 'No Data Provided';
+  this.soilSalinity = results.main_species.growth.soil_salinity || 'No Data Provided';
+  this.soilTexture = results.main_species.growth.soil_texture || 'No Data Provided';
+  this.soilHumidity = results.main_species.growth.soil_humidity || 'No Data Provided';
 
   this.distributionLocations.forEach(location => {
-    this.locationString += `${location},`;
+    this.locationString += `${location}, `;
   });
 }
 
