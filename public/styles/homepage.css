@@ -1,3 +1,10 @@
+#logo{
+  margin-left: 45vw;
+}
+nav{
+  margin-left: 10vw;
+  font-size: 1.3em;
+}
 main {
   margin-top: 25px;
   padding: 5px;
@@ -17,6 +24,7 @@ main {
   margin-top: 40px;
 }
 
+
 #searchbar {
   width: 30%;
   margin-left: 32%;
@@ -31,7 +39,7 @@ main {
   display: flex;
   flex-direction: row;
   text-align: center;
-  margin-left: 26%;
+  margin-left: 22%;
 }
 
 p{
@@ -39,6 +47,8 @@ p{
   margin-bottom: .5%;
   font-size: 20px;
   text-align: center;
+  border-radius: 3px;
+  padding: 1vw;
 }
 
 h2 {

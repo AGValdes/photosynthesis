@@ -6,10 +6,10 @@ header{
   justify-content: space-between;
 }
 #logo{
-  margin-right: 45vw;
+  margin-left: 45vw;
 }
 nav{
-  margin-left: 10vw;
+  margin-right: 7vw;
   font-size: 1.3em;
 }
 img{
@@ -54,9 +54,8 @@ h4{
   float: right;
   margin-bottom: 35px;
   transition: 500ms all;
-  border: none;
 }
-#remove-button:hover, #save-journal:hover, #go-to-wiki:hover{
+#go-to-wiki:hover{
   background-color: rgb(99, 83, 121);
   color: #c1d8c2;
 }
@@ -108,7 +107,8 @@ span{
   margin-top: 15px;
 }
 #journal-text{
- width: 200px;
+ width: 20vw;
+ margin-left: 1vw;
  text-align: center;
  z-index: 9999999;
 }
@@ -116,7 +116,7 @@ span{
   background-color: #c1d8c2;
   border: #568C69 1px solid;
   border-radius: 5px;
-  width: 200px;
+  width: 20vw;
   height: 38vh;
   margin-top: 15px;
   margin-left: 15px;
@@ -130,7 +130,7 @@ span{
 #save-journal{
   width: 14vw;
   transition: 500ms all;
-  border: none;
+  margin-left: 3vw;
 }
 section h3{
   text-align: center;

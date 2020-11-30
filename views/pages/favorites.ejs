@@ -9,7 +9,7 @@
 
 <body>
     <header>
-        <img id="logo" src="https://via.placeholder.com/30">
+        <img id="logo" src="../../styles/img/logoimage.png">
         <%- include('../components/nav') %>
 
     </header>
@@ -17,25 +17,26 @@
         <% plant.forEach(plant =>{ %>
         <section>
             <div class="image-container">
-            <img src="<%= plant.image_url %>" alt="Photo of a <%= plant.common_name %>">
+                <img src="<%= plant.image_url %>" alt="Photo of a <%= plant.common_name %>">
             </div>
             <div id="plant-title">
-            <h2><%= plant.common_name %></h2>
-            <h4><%= plant.scientific_name %></h4>
+                <h2><%= plant.common_name %></h2>
+                <h4><%= plant.scientific_name %></h4>
             </div>
             <div>
-            <form class="favorite-result"action="/addmygarden?_method=PUT" method="post">
-                <input type="hidden" name="scientific_name" value="<%= plant.scientific_name %>">
-                <button type="submit">Add to my Garden</button>
-            </form>
-            <form class="favorite-result" action="/removefromwishlist?_method=PUT" method="post">
-                <input type="hidden" name="scientific_name" value="<%= plant.scientific_name %>">
-                <button type="submit">Remove from my Wishlist</button>
-            </form>
-            <a class="favorite-result" href="https://www.google.com/search?psb=1&tbm=shop&q=<%= plant.common_name %>+plant">Search Google
-                Shopping For
-                This
-                Plant</a>
+                <form class="favorite-result" action="/addmygarden?_method=PUT" method="post">
+                    <input type="hidden" name="scientific_name" value="<%= plant.scientific_name %>">
+                    <button type="submit">Add to my Garden</button>
+                </form>
+                <form class="favorite-result" action="/removefromwishlist?_method=PUT" method="post">
+                    <input type="hidden" name="scientific_name" value="<%= plant.scientific_name %>">
+                    <button type="submit">Remove from my Wishlist</button>
+                </form>
+                <a class="favorite-result" id="go-to-shopping"
+                    href="https://www.google.com/search?psb=1&tbm=shop&q=<%= plant.common_name %>+plant">Search Google
+                    Shopping For
+                    This
+                    Plant</a>
             </div>
         </section>
         <% }) %>
