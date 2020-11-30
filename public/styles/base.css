@@ -63,9 +63,8 @@ button:hover{
 footer{
   background-color: #568C69;
   height: 13vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0px;
+}
+main{
+  min-height: 100vh;
 }
 
