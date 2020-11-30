@@ -1,0 +1,50 @@
+main {
+  margin-top: 25px;
+  padding: 5px;
+  background-color: rgba(169, 136, 191, .55);
+  width: 87%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid #56878C;
+  box-shadow: 5px 10px #457379;
+}
+
+#decoration{
+  display: block;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+}
+
+#searchbar {
+  width: 30%;
+  margin-left: 32%;
+}
+
+::placeholder{
+  color: black;
+  font-size: 18px;
+}
+
+#browsebuttons{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin-left: 26%;
+}
+
+p{
+  margin-top: 2%;
+  margin-bottom: .5%;
+  font-size: 20px;
+  text-align: center;
+}
+
+h2 {
+  display: block;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
