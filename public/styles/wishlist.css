@@ -1,0 +1,55 @@
+
+header{
+  display: flex;
+  justify-content: space-between;
+}
+#logo{
+  margin-left: 10vw;
+}
+
+section{
+  display:flex;
+  justify-content: left;
+  align-items: left;
+  flex-wrap: wrap;
+  background-color:rgba(167, 151, 189, 0.7);
+  border: #56878C 2px solid;
+  border-radius: 5px;
+}
+
+.image-container{
+  width: 200px;
+  height: 200px;
+  overflow:hidden;
+  margin: auto;
+  padding: 1vw;
+  border-radius: 5px;
+  margin-bottom: 1vw;
+}
+img{
+  width: 300px;
+  
+}
+h2{
+  text-align:center;
+  margin: 1vw;
+  font-size: 1.1em;
+}
+h4{
+  font-style: italic;
+  font-size: .9em;
+}
+.favorite-result{
+  width: 25vw;
+  background-color:rgba(167, 151, 189, 0.7);
+  margin: 1vw;
+  text-align: center;
+  border: #56878C 2px solid;
+  border-radius: 5px;
+}
+#plant-title{
+  width: 30vw;
+  text-align: center;
+  padding: 5vw;
+  
+}
