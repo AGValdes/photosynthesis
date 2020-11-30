@@ -140,3 +140,7 @@ section h3{
 section p{
   margin: 10px;
 }
+#note-date{
+  font-size: .9vw;
+  font-weight: bold;
+}

@@ -21,5 +21,6 @@ CREATE TABLE saved_plants (
   soilHumidity VARCHAR(255),
   plantJournal TEXT,
   ismygarden VARCHAR(255),
-  ismywishlist VARCHAR(255)
+  ismywishlist VARCHAR(255),
+  created_on DATE DEFAULT CURRENT_DATE 
 );
