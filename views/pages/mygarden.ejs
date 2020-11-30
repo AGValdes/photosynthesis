@@ -2,76 +2,86 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Garden</title>
+    <%- include('../components/head')%>
+    <link href="../styles/mygarden.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     <header>
         <%- include('../components/nav') %>
+        <img id="logo" src="../../styles/img/logoimage.png">
     </header>
     <main>
         <% plant.forEach(plant =>{ %>
-        <section>
-            <img src="<%=plant.image_url%>" alt="photo of a <%=plant.common_name%>">
-            <div id="namediv">
-                <h2><%=plant.common_name %></h2>
-                <h4><%= plant.scientific_name %></h4>
-                <form action="/removefrommygarden?_method=PUT" method="post">
-                    <input type="hidden" name="scientific_name" value="<%= plant.scientific_name %>">
-                    <button type="submit">Remove from my Garden</button>
-                </form>
+        <section class="plant-detail-box">
+            <div class="image-container">
+                <img src="<%=plant.image_url%>" alt="photo of a <%=plant.common_name%>">
             </div>
-            <div id="carediv">
-                <span>view growing details</span>
-                <ul>
-                    <li>
-                        Edible: <%=plant.edibility%>
-                    </li>
-                    <li>Vegetable: <%=plant.vegetable %>
-                    </li>
-                    <li>Fruiting: <%=plant.fruiting %>
-                    </li>
-                    <li>
-                        Flowering: <%=plant.flowering %>
-                    </li>
-                    <li>Native to: <%=plant.distribution %>
-                    </li>
-                    <li>
-                        Light: <%=plant.light %>
-                    </li>
-                    <li>
-                        Soil pH Range: <%=plant.phMin %> - <%=plant.phMax %>
-                    </li>
-                    <li>Ambient Temp Range: <%=plant.minTemp%> - <%=plant.maxTemp%></li>
-                    <li>
-                        Soil Nutriment Concentration: <%=plant.soilNutriments%>
-                    </li>
-                    <li>
-                        Soil Salinity:
-                        <%=plant.soilSalinity%>
-                    </li>
-                    <li>Soil Texture:
-                        <%=plant.soilTexture%>
-                    </li>
-                    <li>Soil Humidity: <%=plant.soilHumidity%></li>
-                    <li>
-                        <a href="https://en.wikipedia.org/wiki/<%=plant.scientific_name%>">Learn More</a>
-                    </li>
-                </ul>
+            <div class="name-care-div-container">
+                <div class="namediv">
+                    <h2><%=plant.common_name %></h2>
+                    <h4><%= plant.scientific_name %></h4>
+                    <form action="/removefrommygarden?_method=PUT" method="post">
+                        <input type="hidden" name="scientific_name" value="<%= plant.scientific_name %>">
+                        <button id="remove-button" type="submit">Remove from my Garden</button>
+                    </form>
+                </div>
+                <div class="carediv">
+                    <span>view growing details</span>
+                    <ul>
+                        <li>
+                            Edible: <%=plant.edibility%>
+                        </li>
+                        <li>Vegetable: <%=plant.vegetable %>
+                        </li>
+                        <li>Fruiting: <%=plant.fruiting %>
+                        </li>
+                        <li>
+                            Flowering: <%=plant.flowering %>
+                        </li>
+                        <li>Native to: <%=plant.distribution %>
+                        </li>
+                        <li>
+                            Light: <%=plant.light %>
+                        </li>
+                        <li>
+                            Soil pH Range: <%=plant.phMin %> - <%=plant.phMax %>
+                        </li>
+                        <li>Ambient Temp Range: <%=plant.minTemp%> - <%=plant.maxTemp%></li>
+                        <li>
+                            Soil Nutriment Concentration: <%=plant.soilNutriments%>
+                        </li>
+                        <li>
+                            Soil Salinity:
+                            <%=plant.soilSalinity%>
+                        </li>
+                        <li>Soil Texture:
+                            <%=plant.soilTexture%>
+                        </li>
+                        <li>Soil Humidity: <%=plant.soilHumidity%></li>
+                        <li>
+                            <a id="go-to-wiki" href="https://en.wikipedia.org/wiki/<%=plant.scientific_name%>">Learn
+                                More</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div>
-                <% results.forEach(note =>{ %>
-                <% let nameCheck = plant.scientific_name; %>
-                <% if(note.scientific_name === nameCheck){ %>
-                <p><%= note.plantjournal %></p>
-                <% } %>
-                <% }) %>
-                <form action="/mygarden/new" method="post">
-                    <input type="text" name="plantNotes" placeholder="Make notes about your plant here!">
+            <div id="journal">
+                <section id="journal-view">
+                    <h3>My Journal</h3>
+                    <% results.forEach(note =>{ %>
+                    <% let nameCheck = plant.scientific_name; %>
+                    <% if(note.scientific_name === nameCheck){ %>
+                    <p><%= note.plantjournal %></p>
+                    <% } %>
+                    <% }) %>
+                </section>
+                <form id="notes-form" action="/mygarden/new" method="post">
+                    <input id="journal-text" type="text" name="plantNotes"
+                        placeholder="Make notes about your plant here!">
                     <input type="hidden" name="name" value="<%= plant.scientific_name %>">
-                    <button type="submit">Save</button>
+                    <button id="save-journal" type="submit">Save</button>
                 </form>
             </div>
         </section>
