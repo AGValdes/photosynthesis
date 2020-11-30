@@ -164,7 +164,7 @@ function renderGardenPage(req, res) {
 
   client.query(SQL)
     .then(plant => {
-      let SQL2 = `SELECT plantJournal, scientific_name FROM saved_plants;`;
+      let SQL2 = `SELECT plantJournal, scientific_name , to_char(current_date,'Mon-dd-yyyy') as date  FROM saved_plants WHERE plantJournal IS NOT null;`;
       client.query(SQL2)
         .then(results => {
           console.log('results:', results.rows);
