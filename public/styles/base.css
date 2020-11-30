@@ -18,6 +18,7 @@ header{
   display: block;
   margin-bottom: 5px;
   margin-left: 47vw;
+  margin-right: 5vw;
 }
 nav ul li{
   display: inline-block;
@@ -58,3 +59,12 @@ button:hover{
   background-color: rgb(99, 83, 121);
   color: #c1d8c2;
 }
+
+footer{
+  background-color: #568C69;
+  height: 13vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+

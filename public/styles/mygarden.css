@@ -1,24 +1,14 @@
 main{
   align-content: center;
 }
-header{
-  display: flex;
-  justify-content: space-between;
-}
-#logo{
-  margin-left: 45vw;
-}
-nav{
-  margin-right: 7vw;
-  font-size: 1.3em;
-}
-img{
+#plant-pic{
   width: 15vw;
   margin: 1vw;
   border-radius: 3px;
 }
 .plant-detail-box{
   background-color: rgba(167, 151, 189, 0.7);
+  border: #56878C 2px solid;
   display: flex;
   margin: 3vw;
   flex-wrap: wrap;
