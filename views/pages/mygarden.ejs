@@ -30,16 +30,29 @@
                 <div class="carediv">
                     <span>view growing details</span>
                     <ul>
-                        <li>
-                            <span class="detail-label">Edible:</span> <%=plant.edibility%>
-                        </li>
-                        <li><span class="detail-label">Vegetable:</span> <%=plant.vegetable %>
-                        </li>
-                        <li><span class="detail-label">Fruiting:</span> <%=plant.fruiting %>
-                        </li>
-                        <li>
-                            <span class="detail-label"> Flowering:</span> <%=plant.flowering %>
-                        </li>
+                        <ul>                        
+                        <% if (plant.edibility === 'true'){ %>
+                            <li>
+                                <img src="../../styles/img/edibleicon.png" alt="edible">
+                            </li>
+                        <% } %>
+                        <% if (plant.vegetable === 'true'){ %>
+                            <li>
+                                <img src="../../styles/img/vegetableicon.png" alt="vegetable">
+                            </li>
+                        <% } %>
+                        <% if (plant.fruiting === 'true'){ %>
+                            <li>
+                                <img src="../../styles/img/fruiticon.png" alt="fruit">
+                            </li>
+                        <% } %>
+                        <% if (plant.flowering === 'true'){ %>
+                            <li>
+                                <img src="../../styles/img/flowericon.png" alt="flowering">
+                            </li>
+                        <% } %>
+                        </ul>
+                        <ul>
                         <li>
                             <span class="detail-label">Light(0(&lt;10 lux) - 10(&gt;10,000 lux)):</span>
                             <%=plant.light %>

@@ -20,11 +20,27 @@
                     alt="Photo of a <%= plantDetails.common_name %>">
                 <ul id="plant-info">
                     <li><span class="detail-label">Scientific Name:</span> <%= plantDetails.scientific_name %></li>
-                    <li><span class="detail-label">Edibility:</span> <%= plantDetails.edibility %></li>
-                    <li><span class="detail-label">Vegetable:</span> <%= plantDetails.vegetable %> <span
-                            class="detail-label">Fruit:</span>
-                        <%= plantDetails.fruiting %></li>
-                    <li><span class="detail-label">Flowering:</span> <%= plantDetails.flowering %> </li>
+                    <li>
+                    <% if (plantDetails.edibility === true){ %>
+                        <li>
+                           <img src="../../styles/img/edibleicon.png" alt="edible">
+                        </li>
+                    <% } %>     
+                    <% if (plantDetails.vegetable === true){ %>
+                        <li>
+                            <img src="../../styles/img/vegetableicon.png" alt="vegetable">
+                        </li>
+                    <% } %>
+                    <% if (plantDetails.fruiting === true){ %>
+                        <li>
+                            <img src="../../styles/img/fruiticon.png" alt="fruit">
+                        </li>
+                    <% } %>
+                    <% if (plantDetails.flowering === true){ %>
+                        <li>
+                            <img src="../../styles/img/flowericon.png" alt="flowering">
+                        </li>
+                    <% } %>
                     <li>
                         <ul><span class="detail-label">Native Distribution:</span>
                             <% plantDetails.distributionLocations.forEach(location => { %>
